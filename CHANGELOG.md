@@ -1,7 +1,7 @@
-# Next
-Nothing yet!
+# Next (1.2.0)
+- The Great Rename
 
-# 1.1.4
+# Next (1.1.4)
 - Mismatched arguments are now included in failure message (thanks @Eluss)
 - Added shorthand for `AnyMatcher()`
 

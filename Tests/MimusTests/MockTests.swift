@@ -8,12 +8,12 @@ import XCTest
 class FakeVerificationHandler: VerificationHandler {
 
     var lastCallIdentifier: String?
-    var lastMatchedResults: [MatchResult]?
-    var lastMismatchedArgumentsResults: [MatchResult]?
+    var lastMatchedResults: [MimusComparator.ComparisonResult]?
+    var lastMismatchedArgumentsResults: [MimusComparator.ComparisonResult]?
     var lastMode: VerificationMode?
     var lastTestLocation: TestLocation?
 
-    override func verifyCall(callIdentifier: String, matchedResults: [MatchResult], mismatchedArgumentsResults: [MatchResult], mode: VerificationMode, testLocation: TestLocation) {
+    override func verifyCall(callIdentifier: String, matchedResults: [MimusComparator.ComparisonResult], mismatchedArgumentsResults: [MimusComparator.ComparisonResult], mode: VerificationMode, testLocation: TestLocation) {
         lastCallIdentifier = callIdentifier
         lastMatchedResults = matchedResults
         lastMismatchedArgumentsResults = mismatchedArgumentsResults
@@ -25,7 +25,7 @@ class FakeVerificationHandler: VerificationHandler {
 class MockTests: XCTestCase {
 
     class MockRecorder: Mock {
-        var storage = [RecordedCall]()
+        var storage = Storage()
     }
 
     var mockRecorder: MockRecorder!
@@ -72,7 +72,7 @@ class MockTests: XCTestCase {
 
         let expectedFileName: StaticString = "Fixture File"
         // Not too beautiful - we're using our matchers as XCTest cannot verify StaticStrings
-        let namesMatched = expectedFileName.equalTo(other: fakeVerificationHandler.lastTestLocation?.file)
+        let namesMatched = expectedFileName.matches(argument: fakeVerificationHandler.lastTestLocation?.file)
 
         XCTAssertTrue(namesMatched, "Expected verification handler to receive correct file")
         XCTAssertEqual(fakeVerificationHandler.lastTestLocation?.line, 42, "Expected verification handler to receive correct line")
