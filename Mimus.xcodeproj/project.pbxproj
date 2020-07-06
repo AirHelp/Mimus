@@ -198,11 +198,11 @@
 		E81876EB302EFAC7683BAF65 /* MimusTests */ = {
 			isa = PBXGroup;
 			children = (
+				E8187CEEC62A645984B50D5D /* Helpers */,
 				E8187516E7B616DD5C6FB2D1 /* XCTestManifests.swift */,
 				E8187058120E6649B9943982 /* Info.plist */,
 				E818752F102FA9207C030529 /* MatcherExtensionsTests.swift */,
 				E8187F1364DC4D1AE4212F38 /* ComparatorTests.swift */,
-				E8187CEEC62A645984B50D5D /* Helpers */,
 				E8187BA9DB7DC64514B71C4B /* MockTests.swift */,
 				E81875A78BC6770983DD40AC /* FoundationMatcherTests.swift */,
 				E8187ABE479B2C9973C74C32 /* MismatchMessageBuilderTests.swift */,
